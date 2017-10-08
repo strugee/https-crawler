@@ -14,3 +14,23 @@
 */
 
 'use strict';
+
+const Crawler = require('simplecrawler'),
+      assert = require('assert');
+
+const defaults = require('lodash.defaults');
+
+module.exports = function crawl(_opts, ) {
+	assert(_opts.domain);
+
+	const opts = _.defaults(_opts, {
+		includeSubdomains: true
+	});
+
+	const crawler = new Crawler(opts.domain);
+
+	crawler.ignoreWWWDomain = false;
+	crawler.scanSubdomains = opts.includeSubdomains;
+
+	crawler.start();
+};

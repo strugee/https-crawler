@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/strugee/https-crawler/issues"
   },
-  "homepage": "https://github.com/strugee/https-crawler#readme"
+  "homepage": "https://github.com/strugee/https-crawler#readme",
+  "dependencies": {
+    "lodash.defaults": "^4.2.0",
+    "simplecrawler": "^1.1.6"
+  }
 }
