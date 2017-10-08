@@ -1,0 +1,24 @@
+{
+  "name": "https-crawler",
+  "version": "1.0.0",
+  "description": "Build a SQLite database of per-page HTTPS support",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/strugee/https-crawler.git"
+  },
+  "keywords": [
+    "https",
+    "crawler",
+    "spider"
+  ],
+  "author": "AJ Jordan <alex@strugee.net>",
+  "license": "GPL-3.0+",
+  "bugs": {
+    "url": "https://github.com/strugee/https-crawler/issues"
+  },
+  "homepage": "https://github.com/strugee/https-crawler#readme"
+}
