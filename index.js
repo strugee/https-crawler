@@ -16,6 +16,8 @@
 'use strict';
 
 const Crawler = require('simplecrawler'),
+      hasScheme = require('has-scheme'),
+      Queue = require('jankyqueue'),
       assert = require('assert');
 
 const defaults = require('lodash.defaults');
@@ -23,14 +25,21 @@ const defaults = require('lodash.defaults');
 module.exports = function crawl(_opts, ) {
 	assert(_opts.domain);
 
-	const opts = _.defaults(_opts, {
-		includeSubdomains: true
+	const opts = defaults(_opts, {
+		includeSubdomains: true,
+		logger: function noop() {}
 	});
+
+	if (!hasScheme(opts.domain)) opts.domain = 'http://' + opts.domain;
 
 	const crawler = new Crawler(opts.domain);
 
 	crawler.ignoreWWWDomain = false;
 	crawler.scanSubdomains = opts.includeSubdomains;
+
+	crawler.on('fetchcomplete', function(queueItem) {
+		queueItem.url);
+	});
 
 	crawler.start();
 };

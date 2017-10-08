@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/strugee/https-crawler#readme",
   "dependencies": {
+    "has-scheme": "^1.0.0",
+    "jankyqueue": "^0.1.1",
     "lodash.defaults": "^4.2.0",
     "simplecrawler": "^1.1.6"
   }
