@@ -21,6 +21,8 @@ along with https-crawler. If not, see <https://www.gnu.org/licenses/>.
 
 */
 
+'use strict';
+
 const fs = require('fs'),
       crawler = require('./index'),
       defaults = require('lodash.defaults');
