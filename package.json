@@ -25,6 +25,8 @@
     "has-scheme": "^1.0.0",
     "jankyqueue": "^0.1.1",
     "lodash.defaults": "^4.2.0",
-    "simplecrawler": "^1.1.6"
+    "sequelize": "^4.13.5",
+    "simplecrawler": "^1.1.6",
+    "sqlite3": "^3.1.13"
   }
 }

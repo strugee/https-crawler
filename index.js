@@ -18,9 +18,9 @@
 const Crawler = require('simplecrawler'),
       hasScheme = require('has-scheme'),
       Queue = require('jankyqueue'),
+      Sequelize = require('sequelize'),
+      defaults = require('lodash.defaults'),
       assert = require('assert');
-
-const defaults = require('lodash.defaults');
 
 module.exports = function crawl(_opts, ) {
 	assert(_opts.domain);
@@ -32,14 +32,45 @@ module.exports = function crawl(_opts, ) {
 
 	if (!hasScheme(opts.domain)) opts.domain = 'http://' + opts.domain;
 
+	const sequelize = new Sequelize('https_urls', null, null, {
+		storage: opts.dbpath,
+		dialect: 'sqlite'
+	});
+
+	const Url = sequelize.define('url', {
+		url: {
+			type: Sequelize.STRING,
+			primaryKey: true
+		},
+		offersHttps: {
+			type: Sequelize.BOOLEAN
+		},
+		redirectsToHttps: {
+			type: Sequelize.BOOLEAN
+		},
+		redirectsFromHttps: {
+			type: Sequelize.BOOLEAN
+		},
+		inFlight: {
+			type: Sequelize.BOOLEAN,
+			defaultValue: true
+		}
+	});
+
+	const dbSync = Url.sync();
+
 	const crawler = new Crawler(opts.domain);
 
 	crawler.ignoreWWWDomain = false;
 	crawler.scanSubdomains = opts.includeSubdomains;
 
 	crawler.on('fetchcomplete', function(queueItem) {
-		queueItem.url);
+		Url.findOrCreate({where: {url: queueItem.url}, defaults: {
+			url: queueItem.url
+		}}).spread((row, created) => {
+			
+		});
 	});
 
-	crawler.start();
+	dbSync.then(() => crawler.start());
 };
