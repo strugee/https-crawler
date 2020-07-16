@@ -27,6 +27,6 @@
     "lodash.defaults": "^4.2.0",
     "sequelize": "^4.13.5",
     "simplecrawler": "^1.1.6",
-    "sqlite3": "^3.1.13"
+    "sqlite3": "^4.0.0"
   }
 }
